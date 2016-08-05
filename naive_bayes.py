@@ -33,14 +33,15 @@ Xfull = np.concatenate((x1,x2),axis=0)
 for i in range(2,len(df)):
     Xfull = np.concatenate((Xfull,np.array(df.iloc[[i]])),axis=0)
     
+X = Xfull[57:] #adjust the range here to change training and testing datasets
 
 """ Y """
 Yfull = weight_df['sex']
-
+Y = Yfull[57:] #adjust the range here to change training and testing datasets
 
 #GaussianNB
 clf = GaussianNB()
-clf.fit(Xfull, Yfull)
+clf.fit(X, Y)
 
 #Calculating accuracy
 weight_df['psex'] = ""
@@ -50,10 +51,11 @@ for i in range(len(weight_df)):
 
 
 #Calculating accuracy
-accur = pd.Series(weight_df['sex']==weight_df['psex'])
+pred = pd.Series(weight_df['sex']==weight_df['psex'])
+test_data = pred[:57] #adjust the range here to change training and testing datasets
 
-total = accur.count()
-True_Positives = accur[accur==True].count()
+total = test_data.count()
+True_Positives = test_data[test_data==True].count()
 
-accuracy = 100 - (float(total - True_Positives)/total)*100
-print accuracy
+accuracy = round((100 - (float(total - True_Positives)/total)*100), 2)
+print ( "The accuracy on the test dataset is " + str(accuracy) + " %")
