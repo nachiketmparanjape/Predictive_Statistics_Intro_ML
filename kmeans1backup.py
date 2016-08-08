@@ -7,7 +7,7 @@ import seaborn as sns
 undf = pd.read_csv('un.csv')
 undf['country'] = pd.Categorical(undf['country'])
 undf['region'] = pd.Categorical(undf['region'])
-kmeans_df = undf[['lifeMale','lifeFemale','infantMortality']].dropna()
+kmeans_df = undf[['lifeMale','lifeFemale','infantMortality','GDPperCapita']].dropna()
 
 krange = range(1,11)
 avg_sum_of_squares_list = []
@@ -30,14 +30,14 @@ for k in krange:
             cx = c[0]
             cy = c[1]
             cz = c[2]
-            
+            cw = c[3]
             x = current_point[0]
             y = current_point[1]
             z = current_point[2]
-            
+            w = current_point[3]
             #print x
             #print cx
-            distance = np.sqrt((cx-x)**2 + (cy-y)**2 + (cz-z)**2)
+            distance = np.sqrt((cx-x)**2 + (cy-y)**2 + (cz-z)**2 + (cw-w)**2)
             distlist.append(distance)
         
         #min_dist_index = distlist.idxmin()
