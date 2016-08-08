@@ -33,11 +33,11 @@ Xfull = np.concatenate((x1,x2),axis=0)
 for i in range(2,len(df)):
     Xfull = np.concatenate((Xfull,np.array(df.iloc[[i]])),axis=0)
     
-X = Xfull[57:] #adjust the range here to change training and testing datasets
+X = Xfull[120:] #adjust the range here to change training and testing datasets
 
 """ Y """
 Yfull = weight_df['sex']
-Y = Yfull[57:] #adjust the range here to change training and testing datasets
+Y = Yfull[120:] #adjust the range here to change training and testing datasets
 
 #GaussianNB
 clf = GaussianNB()
@@ -52,7 +52,7 @@ for i in range(len(weight_df)):
 
 #Calculating accuracy
 pred = pd.Series(weight_df['sex']==weight_df['psex'])
-test_data = pred[:57] #adjust the range here to change training and testing datasets
+test_data = pred[:120] #adjust the range here to change training and testing datasets
 
 total = test_data.count()
 True_Positives = test_data[test_data==True].count()
