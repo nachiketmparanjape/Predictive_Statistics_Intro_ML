@@ -26,17 +26,17 @@ for i in kmeans_df.index:
     counter = 0
     
     for c in centroid:
-        cx = c[0]
-        cy = c[1]
-        cz = c[2]
+        cx = c[3]
+        #cy = c[1]
+        #cz = c[2]
         
-        x = current_point[0]
-        y = current_point[1]
-        z = current_point[2]
+        x = current_point[3]
+        #y = current_point[1]
+        #z = current_point[2]
         
         #print x
         #print cx
-        distance = np.sqrt((cx-x)**2 + (cy-y)**2 + (cz-z)**2)
+        distance = (cx-x)
         distlist[counter] = distance
         counter += 1
     
