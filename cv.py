@@ -8,8 +8,8 @@ import numpy as np
 iris = datasets.load_iris()
 X = iris.data
 y = iris.target
-total = pd.DataFrame(Y)
-total['target'] = x
+total = pd.DataFrame(X)
+total['target'] = y
 
 """Using Cross-Validation"""
 folds = cross_validation.KFold(len(total),n_folds=5)
@@ -49,3 +49,6 @@ for train, test in folds:
     
 #Average of the scores
 print sum(scores)/len(scores)
+
+#standard deviation
+print np.std(scores)
