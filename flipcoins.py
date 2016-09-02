@@ -35,7 +35,7 @@ def count_tails(flipped_coins):
 def main():
     heads_list = []
     coins = create_coins(100)
-    for i in xrange(100):
+    for i in xrange(10000):
         flip_coins(coins)
         #print(count_heads(coins))
         heads_list.append(count_heads(coins))
